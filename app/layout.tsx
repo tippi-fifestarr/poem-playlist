@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://poem-playlist.vercel.app'),
+  metadataBase: new URL('https://poem-playlist.vercel.app'),
   title: 'Poem Playlist: Family',
   description: 'A curated playlist that tells a story through music - from self-possession to surrender and back again. 18 tracks woven into a poetic journey.',
   keywords: 'playlist, music, poetry, curated, indie, electronic, soul, family, mom',
