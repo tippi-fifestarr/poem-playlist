@@ -58,8 +58,8 @@ export default function PlaylistPoem() {
           <tr>
             <th className="border p-2">#</th>
             <th className="border p-2 text-left">Title</th>
-            <th className="border p-2 text-left">Artist</th>
             <th className="border p-2 text-left">Album</th>
+            <th className="border p-2 text-left">Artist</th>
             <th className="border p-2 text-left">Links</th>
           </tr>
         </thead>
@@ -68,8 +68,8 @@ export default function PlaylistPoem() {
             <tr key={track.order} className="odd:bg-gray-50">
               <td className="border p-2 text-center">{track.order}</td>
               <td className="border p-2 font-medium">{track.title}</td>
-              <td className="border p-2">{track.artist}</td>
               <td className="border p-2 italic">{track.album}</td>
+              <td className="border p-2">{track.artist}</td>
               <td className="border p-2">
                 <div className="flex items-center gap-3">
                   <a
