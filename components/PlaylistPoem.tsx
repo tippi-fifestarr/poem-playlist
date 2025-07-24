@@ -110,9 +110,29 @@ export default function PlaylistPoem() {
                     className="hover:opacity-70 transition-opacity"
                     title="Listen on Tidal"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
-                      <path d="M12.012 3.992L8.008 7.996 12.012 12l4.004-4.004-4.004-4.004zm0 8.016L8.008 16.012 12.012 20.016l4.004-4.004-4.004-4.004zM4.004 7.996L0 12l4.004 4.004L8.008 12 4.004 7.996zM20.016 7.996L16.012 12l4.004 4.004L24.02 12l-4.004-4.004z"/>
-                    </svg>
+                    {(track.order - 1) % 3 === 0 ? (
+                      // Every 3rd track starting with #1: T-shaped icon without bottom diamond (bigger)
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="#000000">
+                        <path d="M5 8L7.5 5.5L10 8L7.5 10.5L5 8z"/>
+                        <path d="M9.5 8L12 5.5L14.5 8L12 10.5L9.5 8z"/>
+                        <path d="M14 8L16.5 5.5L19 8L16.5 10.5L14 8z"/>
+                        <path d="M9.5 13L12 10.5L14.5 13L12 15.5L9.5 13z"/>
+                      </svg>
+                    ) : track.order % 3 === 0 ? (
+                      // Every 3rd track (3, 6, 9, etc.): Full T-shaped Tidal icon
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <path d="M6 8L8 6L10 8L8 10L6 8z"/>
+                        <path d="M10 8L12 6L14 8L12 10L10 8z"/>
+                        <path d="M14 8L16 6L18 8L16 10L14 8z"/>
+                        <path d="M10 12L12 10L14 12L12 14L10 12z"/>
+                        <path d="M10 16L12 14L14 16L12 18L10 16z"/>
+                      </svg>
+                    ) : (
+                      // All other tracks: Circular diamond Tidal icon
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                        <path d="M12.012 3.992L8.008 7.996 12.012 12l4.004-4.004-4.004-4.004zm0 8.016L8.008 16.012 12.012 20.016l4.004-4.004-4.004-4.004zM4.004 7.996L0 12l4.004 4.004L8.008 12 4.004 7.996zM20.016 7.996L16.012 12l4.004 4.004L24.02 12l-4.004-4.004z"/>
+                      </svg>
+                    )}
                   </a>
                 </div>
               </td>
