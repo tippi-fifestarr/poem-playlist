@@ -5,28 +5,29 @@ interface Track {
   album: string;
   apple: string;
   tidal: string;
+  spotify: string;
 }
 
 export default function PlaylistPoem() {
   const tracks: Track[] = [
-    { order: 1, title: "Own Your Own", artist: "Yazmin Lacey", album: "Morning Matters", apple: "https://music.apple.com/us/search?term=Own%20Your%20Own%20Yazmin%20Lacey", tidal: "https://listen.tidal.com/search?q=Own%20Your%20Own%20Yazmin%20Lacey" },
-    { order: 2, title: "Love", artist: "OK Go", album: "And the Adjacent Possible", apple: "https://music.apple.com/us/search?term=Love%20OK%20Go", tidal: "https://listen.tidal.com/search?q=Love%20OK%20Go" },
-    { order: 3, title: "Money", artist: "LEISURE", album: "Twister", apple: "https://music.apple.com/us/search?term=Money%20LEISURE", tidal: "https://listen.tidal.com/search?q=Money%20LEISURE" },
-    { order: 4, title: "Family", artist: "Jordan Rakei", album: "What We Call Life", apple: "https://music.apple.com/us/search?term=Family%20Jordan%20Rakei", tidal: "https://listen.tidal.com/search?q=Family%20Jordan%20Rakei" },
-    { order: 5, title: "Glasshouses", artist: "Maribou State", album: "Kingdoms In Colour", apple: "https://music.apple.com/us/search?term=Glasshouses%20Maribou%20State", tidal: "https://listen.tidal.com/search?q=Glasshouses%20Maribou%20State" },
-    { order: 6, title: "Gold", artist: "Chet Faker", album: "Built on Glass", apple: "https://music.apple.com/us/search?term=Gold%20Chet%20Faker", tidal: "https://listen.tidal.com/search?q=Gold%20Chet%20Faker" },
-    { order: 7, title: "Into Nirvana", artist: "Maverick Sabre", album: "When I Wake Up", apple: "https://music.apple.com/us/search?term=Into%20Nirvana%20Maverick%20Sabre", tidal: "https://listen.tidal.com/search?q=Into%20Nirvana%20Maverick%20Sabre" },
-    { order: 8, title: "Answer", artist: "Phantogram", album: "Three", apple: "https://music.apple.com/us/search?term=Answer%20Phantogram", tidal: "https://listen.tidal.com/search?q=Answer%20Phantogram" },
-    { order: 9, title: "Music on My Teeth", artist: "DJ Koze, José González", album: "Knock Knock", apple: "https://music.apple.com/us/search?term=Music%20on%20My%20Teeth%20DJ%20Koze%2C%20Jos%C3%A9%20Gonz%C3%A1lez", tidal: "https://listen.tidal.com/search?q=Music%20on%20My%20Teeth%20DJ%20Koze%2C%20Jos%C3%A9%20Gonz%C3%A1lez" },
-    { order: 10, title: "Golden", artist: "Jill Scott", album: "Beautifully Human: Words and Sounds Vol. 2", apple: "https://music.apple.com/us/search?term=Golden%20Jill%20Scott", tidal: "https://listen.tidal.com/search?q=Golden%20Jill%20Scott" },
-    { order: 11, title: "Weak", artist: "Vintage Culture, Maverick Sabre, Tom Breu", album: "Promised Land", apple: "https://music.apple.com/us/search?term=Weak%20Vintage%20Culture%2C%20Maverick%20Sabre%2C%20Tom%20Breu", tidal: "https://listen.tidal.com/search?q=Weak%20Vintage%20Culture%2C%20Maverick%20Sabre%2C%20Tom%20Breu" },
-    { order: 12, title: "Somedays", artist: "Sonny Fodera, Jazzy, D.O.D", album: "Somedays", apple: "https://music.apple.com/us/search?term=Somedays%20Sonny%20Fodera%2C%20Jazzy%2C%20D.O.D", tidal: "https://listen.tidal.com/search?q=Somedays%20Sonny%20Fodera%2C%20Jazzy%2C%20D.O.D" },
-    { order: 13, title: "Cold Heart - PNAU Remix", artist: "Elton John, Dua Lipa, PNAU", album: "The Lockdown Sessions", apple: "https://music.apple.com/us/search?term=Cold%20Heart%20-%20PNAU%20Remix%20Elton%20John%2C%20Dua%20Lipa%2C%20PNAU", tidal: "https://listen.tidal.com/search?q=Cold%20Heart%20-%20PNAU%20Remix%20Elton%20John%2C%20Dua%20Lipa%2C%20PNAU" },
-    { order: 14, title: "Warm Foothills", artist: "alt-J", album: "This Is All Yours", apple: "https://music.apple.com/us/search?term=Warm%20Foothills%20alt-J", tidal: "https://listen.tidal.com/search?q=Warm%20Foothills%20alt-J" },
-    { order: 15, title: "Shady Lane", artist: "Pavement", album: "Brighten the Corners", apple: "https://music.apple.com/us/search?term=Shady%20Lane%20Pavement", tidal: "https://listen.tidal.com/search?q=Shady%20Lane%20Pavement" },
-    { order: 16, title: "The Warmth Of The Sun - Remastered", artist: "The Beach Boys", album: "Shut Down, Vol. 2 (Remastered)", apple: "https://music.apple.com/us/search?term=The%20Warmth%20Of%20The%20Sun%20-%20Remastered%20The%20Beach%20Boys", tidal: "https://listen.tidal.com/search?q=The%20Warmth%20Of%20The%20Sun%20-%20Remastered%20The%20Beach%20Boys" },
-    { order: 17, title: "Shady Grove", artist: "Doc Watson", album: "The Essential Doc Watson", apple: "https://music.apple.com/us/search?term=Shady%20Grove%20Doc%20Watson", tidal: "https://listen.tidal.com/search?q=Shady%20Grove%20Doc%20Watson" },
-    { order: 18, title: "Come On Home", artist: "Fred again.., Brian Eno", album: "Secret Life", apple: "https://music.apple.com/us/search?term=Come%20On%20Home%20Fred%20again..%2C%20Brian%20Eno", tidal: "https://listen.tidal.com/search?q=Come%20On%20Home%20Fred%20again..%2C%20Brian%20Eno" }
+    { order: 1, title: "Own Your Own", artist: "Yazmin Lacey", album: "Morning Matters", apple: "https://music.apple.com/us/search?term=Own%20Your%20Own%20Yazmin%20Lacey", tidal: "https://listen.tidal.com/search?q=Own%20Your%20Own%20Yazmin%20Lacey", spotify: "https://open.spotify.com/track/3v7IwjkgOvcdoT0Odgrwzc" },
+    { order: 2, title: "Love", artist: "OK Go", album: "And the Adjacent Possible", apple: "https://music.apple.com/us/search?term=Love%20OK%20Go", tidal: "https://listen.tidal.com/search?q=Love%20OK%20Go", spotify: "https://open.spotify.com/track/6Fn3HQPcm2DtgIfEIPeKys" },
+    { order: 3, title: "Money", artist: "LEISURE", album: "Twister", apple: "https://music.apple.com/us/search?term=Money%20LEISURE", tidal: "https://listen.tidal.com/search?q=Money%20LEISURE", spotify: "https://open.spotify.com/track/1f5eDiILUNeftOB26e6LB1" },
+    { order: 4, title: "Family", artist: "Jordan Rakei", album: "What We Call Life", apple: "https://music.apple.com/us/search?term=Family%20Jordan%20Rakei", tidal: "https://listen.tidal.com/search?q=Family%20Jordan%20Rakei", spotify: "https://open.spotify.com/track/6OnEsU4yuFEIuuK1pzZ0z5" },
+    { order: 5, title: "Glasshouses", artist: "Maribou State", album: "Kingdoms In Colour", apple: "https://music.apple.com/us/search?term=Glasshouses%20Maribou%20State", tidal: "https://listen.tidal.com/search?q=Glasshouses%20Maribou%20State", spotify: "https://open.spotify.com/track/7isVqPzG3R5ni6IM4YG0sv" },
+    { order: 6, title: "Gold", artist: "Chet Faker", album: "Built on Glass", apple: "https://music.apple.com/us/search?term=Gold%20Chet%20Faker", tidal: "https://listen.tidal.com/search?q=Gold%20Chet%20Faker", spotify: "https://open.spotify.com/track/1Ll09EiN5ffeFl1xNZB2Uk" },
+    { order: 7, title: "Into Nirvana", artist: "Maverick Sabre", album: "When I Wake Up", apple: "https://music.apple.com/us/search?term=Into%20Nirvana%20Maverick%20Sabre", tidal: "https://listen.tidal.com/search?q=Into%20Nirvana%20Maverick%20Sabre", spotify: "https://open.spotify.com/track/1De7ddr6NfqajOQLu5uwKG" },
+    { order: 8, title: "Answer", artist: "Phantogram", album: "Three", apple: "https://music.apple.com/us/search?term=Answer%20Phantogram", tidal: "https://listen.tidal.com/search?q=Answer%20Phantogram", spotify: "https://open.spotify.com/track/09eSdS5RTgyodJt3krr5AC" },
+    { order: 9, title: "Music on My Teeth", artist: "DJ Koze, José González", album: "Knock Knock", apple: "https://music.apple.com/us/search?term=Music%20on%20My%20Teeth%20DJ%20Koze%2C%20Jos%C3%A9%20Gonz%C3%A1lez", tidal: "https://listen.tidal.com/search?q=Music%20on%20My%20Teeth%20DJ%20Koze%2C%20Jos%C3%A9%20Gonz%C3%A1lez", spotify: "https://open.spotify.com/track/1O4rMGiGy7lbcqXOG91Xbv" },
+    { order: 10, title: "Golden", artist: "Jill Scott", album: "Beautifully Human: Words and Sounds Vol. 2", apple: "https://music.apple.com/us/search?term=Golden%20Jill%20Scott", tidal: "https://listen.tidal.com/search?q=Golden%20Jill%20Scott", spotify: "https://open.spotify.com/track/0bHs3ly4Bv5BlzE3KrePfX" },
+    { order: 11, title: "Weak", artist: "Vintage Culture, Maverick Sabre, Tom Breu", album: "Promised Land", apple: "https://music.apple.com/us/search?term=Weak%20Vintage%20Culture%2C%20Maverick%20Sabre%2C%20Tom%20Breu", tidal: "https://listen.tidal.com/search?q=Weak%20Vintage%20Culture%2C%20Maverick%20Sabre%2C%20Tom%20Breu", spotify: "https://open.spotify.com/track/37uMiu52DbSIx3SJ3sGDow" },
+    { order: 12, title: "Somedays", artist: "Sonny Fodera, Jazzy, D.O.D", album: "Somedays", apple: "https://music.apple.com/us/search?term=Somedays%20Sonny%20Fodera%2C%20Jazzy%2C%20D.O.D", tidal: "https://listen.tidal.com/search?q=Somedays%20Sonny%20Fodera%2C%20Jazzy%2C%20D.O.D", spotify: "https://open.spotify.com/track/3wo3d0I5H8KjkwGvnz8WbB" },
+    { order: 13, title: "Cold Heart - PNAU Remix", artist: "Elton John, Dua Lipa, PNAU", album: "The Lockdown Sessions", apple: "https://music.apple.com/us/search?term=Cold%20Heart%20-%20PNAU%20Remix%20Elton%20John%2C%20Dua%20Lipa%2C%20PNAU", tidal: "https://listen.tidal.com/search?q=Cold%20Heart%20-%20PNAU%20Remix%20Elton%20John%2C%20Dua%20Lipa%2C%20PNAU", spotify: "https://open.spotify.com/track/7rglLriMNBPAyuJOMGwi39" },
+    { order: 14, title: "Warm Foothills", artist: "alt-J", album: "This Is All Yours", apple: "https://music.apple.com/us/search?term=Warm%20Foothills%20alt-J", tidal: "https://listen.tidal.com/search?q=Warm%20Foothills%20alt-J", spotify: "https://open.spotify.com/track/1YUcTZ0ehoHY6G6Prhcbj0" },
+    { order: 15, title: "Shady Lane", artist: "Pavement", album: "Brighten the Corners", apple: "https://music.apple.com/us/search?term=Shady%20Lane%20Pavement", tidal: "https://listen.tidal.com/search?q=Shady%20Lane%20Pavement", spotify: "https://open.spotify.com/track/0JZAGUbzkwWSnoInuWoBgd" },
+    { order: 16, title: "The Warmth Of The Sun - Remastered", artist: "The Beach Boys", album: "Shut Down, Vol. 2 (Remastered)", apple: "https://music.apple.com/us/search?term=The%20Warmth%20Of%20The%20Sun%20-%20Remastered%20The%20Beach%20Boys", tidal: "https://listen.tidal.com/search?q=The%20Warmth%20Of%20The%20Sun%20-%20Remastered%20The%20Beach%20Boys", spotify: "https://open.spotify.com/track/1HFtTn1sIJhkV6mtY8ax2Z" },
+    { order: 17, title: "Shady Grove", artist: "Doc Watson", album: "The Essential Doc Watson", apple: "https://music.apple.com/us/search?term=Shady%20Grove%20Doc%20Watson", tidal: "https://listen.tidal.com/search?q=Shady%20Grove%20Doc%20Watson", spotify: "https://open.spotify.com/track/6sYdf0d7IaX848f5UChyij" },
+    { order: 18, title: "Come On Home", artist: "Fred again.., Brian Eno", album: "Secret Life", apple: "https://music.apple.com/us/search?term=Come%20On%20Home%20Fred%20again..%2C%20Brian%20Eno", tidal: "https://listen.tidal.com/search?q=Come%20On%20Home%20Fred%20again..%2C%20Brian%20Eno", spotify: "https://open.spotify.com/track/6MyN49pk1GgnsH9owzqVLx" }
   ];
 
   return (
@@ -34,6 +35,21 @@ export default function PlaylistPoem() {
         <div className="text-center mb-8">
           <h1 className="text-4xl sm:text-5xl font-bold mb-2 text-gray-900">Family</h1>
           <p className="text-xl text-gray-600 italic">for your mom</p>
+        </div>
+
+        {/* Spotify Playlist Embed */}
+        <div className="mb-8 flex justify-center">
+          <iframe
+            style={{borderRadius: '12px'}}
+            src="https://open.spotify.com/embed/playlist/3lti380WJdiG7OKrZHGseo?utm_source=generator"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            className="max-w-2xl"
+          />
         </div>
 
       {/* Track Table */}
@@ -55,23 +71,42 @@ export default function PlaylistPoem() {
               <td className="border p-2">{track.artist}</td>
               <td className="border p-2 italic">{track.album}</td>
               <td className="border p-2">
-                <a
-                  href={track.apple}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Apple Music
-                </a>
-                <span className="mx-1">|</span>
-                <a
-                  href={track.tidal}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Tidal
-                </a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href={track.spotify}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity"
+                    title="Listen on Spotify"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954">
+                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href={track.apple}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity"
+                    title="Listen on Apple Music"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#FA243C">
+                      <path d="M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043C21.003.517 20.373.285 19.7.164c-.517-.093-1.038-.135-1.564-.15-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208c-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18-.013.43-.024.86-.024 1.29v9.884c0 .373.014.746.024 1.12.01.394.044.786.1 1.178.071.483.171.96.363 1.408.565 1.328 1.529 2.25 2.865 2.78.703.278 1.446.358 2.193.4.152.01.303.017.455.027h11.028c.152-.01.303-.017.455-.027.747-.042 1.49-.122 2.193-.4 1.336-.53 2.3-1.452 2.865-2.78.192-.448.292-.925.363-1.408.056-.392.09-.784.1-1.178.01-.374.024-.747.024-1.12V6.124zm-2.39 10.515c-.005.264-.037.528-.08.79-.06.368-.14.73-.28 1.068-.24.584-.615 1.077-1.15 1.395-.353.21-.748.325-1.155.39-.24.04-.48.06-.723.07-.168.007-.336.012-.505.015H6.29c-.169-.003-.337-.008-.505-.015-.243-.01-.483-.03-.723-.07-.407-.065-.802-.18-1.155-.39-.535-.318-.91-.811-1.15-1.395-.14-.338-.22-.7-.28-1.068-.043-.262-.075-.526-.08-.79-.007-.211-.014-.423-.019-.634V7.21c.005-.211.012-.423.019-.634.005-.264.037-.528.08-.79.06-.368.14-.73.28-1.068.24-.584.615-1.077 1.15-1.395.353-.21.748-.325 1.155-.39.24-.04.48-.06.723-.07.168-.007.336-.012.505-.015h11.42c.169.003.337.008.505.015.243.01.483.03.723.07.407.065.802.18 1.155.39.535.318.91.811 1.15 1.395.14.338.22.7.28 1.068.043.262.075.526.08.79.007.211.014.423.019.634v9.472c-.005.211-.012.423-.019.634z"/>
+                      <path d="M18.758 9.758c-.867-.952-2.15-1.557-3.608-1.557-1.671 0-3.133.78-4.086 1.996-.953-1.216-2.415-1.996-4.086-1.996-2.86 0-5.178 2.317-5.178 5.178s2.318 5.178 5.178 5.178c1.671 0 3.133-.78 4.086-1.996.953 1.216 2.415 1.996 4.086 1.996 2.86 0 5.178-2.317 5.178-5.178 0-1.458-.605-2.741-1.57-3.621zm-7.694 6.621c-.952 0-1.724-.772-1.724-1.724s.772-1.724 1.724-1.724 1.724.772 1.724 1.724-.772 1.724-1.724 1.724z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href={track.tidal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity"
+                    title="Listen on Tidal"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+                      <path d="M12.012 3.992L8.008 7.996 12.012 12l4.004-4.004-4.004-4.004zm0 8.016L8.008 16.012 12.012 20.016l4.004-4.004-4.004-4.004zM4.004 7.996L0 12l4.004 4.004L8.008 12 4.004 7.996zM20.016 7.996L16.012 12l4.004 4.004L24.02 12l-4.004-4.004z"/>
+                    </svg>
+                  </a>
+                </div>
               </td>
             </tr>
           ))}
