@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "cp .next/routes-manifest.json out/",
     "start": "next start",
     "lint": "next lint"
   },
