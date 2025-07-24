@@ -208,6 +208,39 @@ export default function PlaylistPoem() {
           <p className="text-blue-700 leading-relaxed">
             From jazzy self‑affirmation to ambient homecoming, the playlist arcs through material questions, luminous highs, and sun‑dappled resolutions. Queue it front‑to‑back to trace a full‑body meditation on agency, community, and return.
           </p>
+          <div className="mt-4 text-center">
+            <a
+              href="https://github.com/tippi-fifestarr/poem-playlist"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-80 transition-opacity"
+              title="View source on GitHub"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
+                <defs>
+                  <linearGradient id="musicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#4f46e5", stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#7c3aed", stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                
+                <circle cx="16" cy="16" r="15" fill="url(#musicGradient)" stroke="#1f2937" strokeWidth="1"/>
+                
+                <rect x="12" y="8" width="1.5" height="12" fill="#ffffff"/>
+                
+                <ellipse cx="11.2" cy="19" rx="2" ry="1.5" fill="#ffffff"/>
+                
+                <path d="M13.5 8 Q18 6 18 10 Q18 8 13.5 10" fill="#ffffff"/>
+                
+                <line x1="20" y1="12" x2="26" y2="12" stroke="#ffffff" strokeWidth="1" opacity="0.8"/>
+                <line x1="20" y1="15" x2="24" y2="15" stroke="#ffffff" strokeWidth="1" opacity="0.6"/>
+                <line x1="20" y1="18" x2="27" y2="18" stroke="#ffffff" strokeWidth="1" opacity="0.8"/>
+                <line x1="20" y1="21" x2="25" y2="21" stroke="#ffffff" strokeWidth="1" opacity="0.6"/>
+                
+                <path d="M7 10 Q7 8 9 8 Q11 8 11 10 Q11 8 13 8 Q15 8 15 10 Q15 12 11 16 Q7 12 7 10" fill="#ffffff" opacity="0.7" transform="scale(0.4) translate(10, 15)"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
     </div>
