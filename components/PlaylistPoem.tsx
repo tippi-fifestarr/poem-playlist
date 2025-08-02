@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import { ThemeToggle } from './ThemeProvider'
 
 interface Track {
   order: number;
@@ -37,23 +38,24 @@ export default function PlaylistPoem() {
   ];
 
   return (
-          <div className="p-8 max-w-5xl mx-auto font-sans">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-2 text-gray-900">Family</h1>
-          <p className="text-xl text-gray-600 italic">for your mom</p>
-        </div>
+    <div className="p-8 max-w-5xl mx-auto font-sans">
+      <ThemeToggle />
+      <div className="text-center mb-8">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-2 text-gray-900 dark:text-white">Family</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400 italic">for your mom</p>
+      </div>
 
         {/* Tabbed Playlist Player */}
         <div className="mb-8 max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
             {/* Tab Headers */}
-            <div className="flex border-b border-gray-200">
+            <div className="flex border-b border-gray-200 dark:border-gray-700">
               <button
                 onClick={() => setActiveTab('embed')}
                 className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
                   activeTab === 'embed' 
-                    ? 'bg-green-50 text-green-700 border-b-2 border-green-500' 
-                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                    ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border-b-2 border-green-500' 
+                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >
                 <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -61,14 +63,14 @@ export default function PlaylistPoem() {
                 </svg>
                 Embedded Player
               </button>
-              <button
-                onClick={() => setActiveTab('links')}
-                className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                  activeTab === 'links' 
-                    ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-500' 
-                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
-                }`}
-              >
+                             <button
+                 onClick={() => setActiveTab('links')}
+                 className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
+                   activeTab === 'links' 
+                     ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-b-2 border-blue-500' 
+                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                 }`}
+               >
                 <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                 </svg>
@@ -81,8 +83,8 @@ export default function PlaylistPoem() {
               {activeTab === 'embed' && (
                 <div>
                   <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">🎵 Family Playlist</h3>
-                    <p className="text-gray-600 text-sm">18 tracks • 1 hour 12 minutes</p>
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">🎵 Family Playlist</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">18 tracks • 1 hour 12 minutes</p>
                   </div>
                   
                   {/* Spotify Embed */}
@@ -119,13 +121,13 @@ export default function PlaylistPoem() {
                 </div>
               )}
 
-              {activeTab === 'links' && (
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">🎵 Family Playlist</h3>
-                    <p className="text-gray-600 text-sm mb-4">18 tracks • 1 hour 12 minutes</p>
-                    <p className="text-gray-500 text-sm">Click below to open the playlist in your preferred streaming service:</p>
-                  </div>
+                             {activeTab === 'links' && (
+                 <div>
+                   <div className="mb-4">
+                     <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">🎵 Family Playlist</h3>
+                     <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">18 tracks • 1 hour 12 minutes</p>
+                     <p className="text-gray-500 dark:text-gray-500 text-sm">Click below to open the playlist in your preferred streaming service:</p>
+                   </div>
                   
                   <div className="space-y-3">
                     <a
@@ -186,24 +188,24 @@ export default function PlaylistPoem() {
         </div>
 
       {/* Track Table */}
-      <table className="w-full border border-gray-300 rounded-lg overflow-hidden text-sm sm:text-base">
-        <thead className="bg-gray-100">
+      <table className="w-full border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden text-sm sm:text-base">
+        <thead className="bg-gray-100 dark:bg-gray-700">
           <tr>
-            <th className="border p-2">#</th>
-            <th className="border p-2 text-left">Title</th>
-            <th className="border p-2 text-left">Album</th>
-            <th className="border p-2 text-left">Artist</th>
-            <th className="border p-2 text-left">Links</th>
+            <th className="border border-gray-300 dark:border-gray-600 p-2 text-gray-900 dark:text-gray-100">#</th>
+            <th className="border border-gray-300 dark:border-gray-600 p-2 text-left text-gray-900 dark:text-gray-100">Title</th>
+            <th className="border border-gray-300 dark:border-gray-600 p-2 text-left text-gray-900 dark:text-gray-100">Album</th>
+            <th className="border border-gray-300 dark:border-gray-600 p-2 text-left text-gray-900 dark:text-gray-100">Artist</th>
+            <th className="border border-gray-300 dark:border-gray-600 p-2 text-left text-gray-900 dark:text-gray-100">Links</th>
           </tr>
         </thead>
         <tbody>
           {tracks.map((track) => (
-            <tr key={track.order} className="odd:bg-gray-50">
-              <td className="border p-2 text-center">{track.order}</td>
-              <td className="border p-2 font-medium">{track.title}</td>
-              <td className="border p-2 italic">{track.album}</td>
-              <td className="border p-2">{track.artist}</td>
-              <td className="border p-2">
+            <tr key={track.order} className="odd:bg-gray-50 dark:odd:bg-gray-800">
+              <td className="border border-gray-300 dark:border-gray-600 p-2 text-center text-gray-900 dark:text-gray-100">{track.order}</td>
+              <td className="border border-gray-300 dark:border-gray-600 p-2 font-medium text-gray-900 dark:text-gray-100">{track.title}</td>
+              <td className="border border-gray-300 dark:border-gray-600 p-2 italic text-gray-900 dark:text-gray-100">{track.album}</td>
+              <td className="border border-gray-300 dark:border-gray-600 p-2 text-gray-900 dark:text-gray-100">{track.artist}</td>
+              <td className="border border-gray-300 dark:border-gray-600 p-2">
                 <div className="flex items-center gap-3">
                   <a
                     href={track.spotify}
@@ -276,26 +278,26 @@ export default function PlaylistPoem() {
 
       {/* The Poem */}
       <section className="mt-12 prose prose-lg mx-auto">
-        <h2>The Poem</h2>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl border border-gray-200">
+        <h2 className="text-gray-900 dark:text-white">The Poem</h2>
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-8 rounded-xl border border-gray-200 dark:border-gray-700">
           <div className="text-center space-y-4 text-lg leading-relaxed">
-            <p className="text-gray-600 italic">Own Your Own</p>
-            <p className="text-2xl font-bold text-gray-800">Love.</p>
-            <p className="text-gray-600 italic">Money, Family.</p>
-            <p className="text-xl text-gray-700">Glasshouses—Gold.</p>
+            <p className="text-gray-600 dark:text-gray-300 italic">Own Your Own</p>
+            <p className="text-2xl font-bold text-gray-800 dark:text-white">Love.</p>
+            <p className="text-gray-600 dark:text-gray-300 italic">Money, Family.</p>
+            <p className="text-xl text-gray-700 dark:text-gray-200">Glasshouses—Gold.</p>
             
             <div className="my-6">
-              <p className="text-lg text-gray-700">Into Nirvana? Answer.</p>
-              <p className="text-lg text-gray-700">Music on My Teeth—Golden.</p>
-              <p className="text-lg text-gray-700">Weak Somedays.</p>
+              <p className="text-lg text-gray-700 dark:text-gray-200">Into Nirvana? Answer.</p>
+              <p className="text-lg text-gray-700 dark:text-gray-200">Music on My Teeth—Golden.</p>
+              <p className="text-lg text-gray-700 dark:text-gray-200">Weak Somedays.</p>
             </div>
             
-            <p className="text-xl font-semibold text-gray-800">Cold Heart; Warm Foothills.</p>
-            <p className="text-lg text-gray-700">Shady Lane; <span className="italic">The Warmth Of The Sun</span></p>
+            <p className="text-xl font-semibold text-gray-800 dark:text-white">Cold Heart; Warm Foothills.</p>
+            <p className="text-lg text-gray-700 dark:text-gray-200">Shady Lane; <span className="italic">The Warmth Of The Sun</span></p>
             
             <div className="my-6">
-              <p className="text-lg text-gray-700">Shady Grove.</p>
-              <p className="text-2xl font-bold text-gray-800">Come On Home.</p>
+              <p className="text-lg text-gray-700 dark:text-gray-200">Shady Grove.</p>
+              <p className="text-2xl font-bold text-gray-800 dark:text-white">Come On Home.</p>
             </div>
           </div>
         </div>
@@ -303,28 +305,31 @@ export default function PlaylistPoem() {
 
       {/* Coming Soon: Blockchain Comments */}
       <section className="mt-12 max-w-4xl mx-auto">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">🔗 Blockchain Integration Coming Soon</h3>
-          <p className="text-blue-700">Connect your Aptos wallet to comment on this playlist poem on-chain!</p>
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-2">🔗 Blockchain Integration Coming Soon</h3>
+          <p className="text-blue-700 dark:text-blue-400">Connect your Aptos wallet to comment on this playlist poem on-chain!</p>
         </div>
       </section>
 
       {/* What to Expect */}
       <section className="mt-12 prose prose-lg mx-auto">
-        <h2>About This Poem</h2>
-        <p>
+        <h2 className="text-gray-900 dark:text-white">About This Poem</h2>
+        <p className="text-gray-700 dark:text-gray-200">
           From dusty‑jazz soul openers to sun‑kissed folk closes, this playlist moves like a slow‑rolling river of self‑discovery. You'll glide through neo‑soul affirmation (Own Your Own), quirky art‑pop fireworks (Love), psychedelic lounge funk (Money), and beyond—landing finally in Fred again.. & Brian Eno's ambient welcome‑home.
         </p>
-        <p>
+        <p className="text-gray-700 dark:text-gray-200">
           Each track is sequenced for contrast: material concerns to spiritual release, dusk grooves to dawn serenity. Expect rubbery bass lines, shimmering synths, and warm acoustic valleys—a continuous arc that lifts, dips, and coasts until it settles gently, like morning light spilling into the room.
         </p>
 
         {/* Expandable Track-by-Track Journey */}
         <details className="mt-8 group">
-          <summary className="cursor-pointer list-none p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+          <summary className="cursor-pointer list-none p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-gray-800">Track-by-Track Journey</span>
-              <svg className="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div>
+                <span className="font-semibold text-gray-800 dark:text-gray-200">Track-by-Track Journey</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">(click to expand)</span>
+              </div>
+              <svg className="w-5 h-5 text-gray-600 dark:text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
@@ -332,84 +337,84 @@ export default function PlaylistPoem() {
           
           <div className="mt-4 space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Opening: Self‑Command & Connection</h3>
-              <p>
-                <strong>1. "Own Your Own" – Yazmin Lacey</strong> ushers you in with smoky neo‑soul and a mantra of self‑possession; COLORS Studio's live take highlights its languid, sunrise warmth. <a href="https://www.youtube.com/watch?v=ZHTA-c4VX10" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[YouTube]</a>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Opening: Self‑Command & Connection</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">1. "Own Your Own" – Yazmin Lacey</strong> ushers you in with smoky neo‑soul and a mantra of self‑possession; COLORS Studio's live take highlights its languid, sunrise warmth. <a href="https://www.youtube.com/watch?v=ZHTA-c4VX10" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[YouTube]</a>
               </p>
-              <p>
-                <strong>2. "Love" – OK Go</strong> flips art‑pop into mirror‑maze spectacle; the band's 29‑robot video signals upbeat curiosity and precision. <a href="https://people.com/ok-go-music-video-love-most-complicated-exclusive-11714044" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[People.com]</a>
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Earthly Matters</h3>
-              <p>
-                <strong>3. "Money" – LEISURE</strong> drapes slick bass over anti‑materialist lyrics, reminding you that cash feels hollow without joy. <a href="https://www.songtell.com/leisure/money" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
-              </p>
-              <p>
-                <strong>4. "Family" – Jordan Rakei</strong> slows the pulse with contemplative keys, sifting loyalty and loss in velvet baritone. <a href="https://www.songtell.com/jordan-rakei/family" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
-              </p>
-              <p>
-                <strong>5. "Glasshouses" – Maribou State</strong> layers broken‑beat electronica and sampled whispers, evoking fragile transparency. <a href="https://www.songtell.com/maribou-state/glasshouses" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
-              </p>
-              <p>
-                <strong>6. "Gold" – Chet Faker</strong> slides in on a midnight‑skate groove—smooth, confident, undeniably stylish. <a href="https://en.wikipedia.org/wiki/Gold_%28Chet_Faker_song%29" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Wikipedia]</a>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">2. "Love" – OK Go</strong> flips art‑pop into mirror‑maze spectacle; the band's 29‑robot video signals upbeat curiosity and precision. <a href="https://people.com/ok-go-music-video-love-most-complicated-exclusive-11714044" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[People.com]</a>
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Mid‑Journey Kaleidoscope</h3>
-              <p>
-                <strong>7. "Into Nirvana" – Maverick Sabre</strong> merges reggae‑tinted beats with soul testimony, opening a door to transcendence. <a href="https://www.youtube.com/watch?v=1HFsBv54wio" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[YouTube]</a>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Earthly Matters</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">3. "Money" – LEISURE</strong> drapes slick bass over anti‑materialist lyrics, reminding you that cash feels hollow without joy. <a href="https://www.songtell.com/leisure/money" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
               </p>
-              <p>
-                <strong>8. "Answer" – Phantogram</strong> pulses with trip‑hop tension, craving clarity inside echoed guitars. <a href="https://www.songtell.com/phantogram/answer" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">4. "Family" – Jordan Rakei</strong> slows the pulse with contemplative keys, sifting loyalty and loss in velvet baritone. <a href="https://www.songtell.com/jordan-rakei/family" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
               </p>
-              <p>
-                <strong>9. "Music on My Teeth" – DJ Koze & José González</strong> flows like dream‑logic house; critics call Knock Knock "lush, melodic, and wistful." <a href="https://pitchfork.com/reviews/albums/dj-koze-knock-knock" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Pitchfork]</a> <a href="https://www.songtell.com/dj-koze-ft-jos-gonz-lez/music-on-my-teeth" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">5. "Glasshouses" – Maribou State</strong> layers broken‑beat electronica and sampled whispers, evoking fragile transparency. <a href="https://www.songtell.com/maribou-state/glasshouses" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
               </p>
-              <p>
-                <strong>10. "Golden" – Jill Scott</strong> bursts in, a radiant self‑empowerment anthem—"live your life like it's golden." <a href="https://www.songmeaningsandfacts.com/golden-a-timeless-anthem-of-self-empowerment/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Song Meanings]</a> <a href="https://en.wikipedia.org/wiki/Golden_%28Jill_Scott_song%29" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Wikipedia]</a>
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Peaks & Valleys</h3>
-              <p>
-                <strong>11. "Weak" – Vintage Culture & Maverick Sabre</strong> lifts the floor with festival‑ready deep house before surrendering to vulnerability. <a href="https://www.youtube.com/watch?v=1HFsBv54wio" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[YouTube]</a>
-              </p>
-              <p>
-                <strong>12. "Somedays" – Sonny Fodera, Jazzy, D.O.D</strong> keeps the four‑on‑the‑floor rolling—a hopeful bridge to brighter mornings. <a href="https://www.youtube.com/watch?v=xnoTAkThZq4" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[YouTube]</a>
-              </p>
-              <p>
-                <strong>13. "Cold Heart – PNAU Remix" – Elton John & Dua Lipa</strong> fuses disco nostalgia and modern pop, a chart‑dominating warm‑up. <a href="https://www.theaustralian.com.au/arts/music/nothing-hyperbolic-about-it-pnaus-success-in-the-wake-of-cold-heart-remix/news-story/93527ea12e60b34e942f1d15275f3733" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[The Australian]</a> <a href="https://people.com/dua-lipa-debuting-cold-heart-elton-john-royal-albert-hall-8762932" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[People.com]</a>
-              </p>
-              <p>
-                <strong>14. "Warm Foothills" – alt‑J</strong> returns you to acoustic intimacy, breath samples weaving lovers' voices. <a href="https://www.songtell.com/maverick-sabre/into-nirvana" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[Songtell]</a>
-              </p>
-              <p>
-                <strong>15. "Shady Lane" – Pavement</strong> introduces slack‑rock ease—jangly guitars and wry grins. <a href="https://karaokeparty.com/song-meanings/meaning-of-answer-by-phantogram/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[KaraokeParty]</a>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">6. "Gold" – Chet Faker</strong> slides in on a midnight‑skate groove—smooth, confident, undeniably stylish. <a href="https://en.wikipedia.org/wiki/Gold_%28Chet_Faker_song%29" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Wikipedia]</a>
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Gentle Landing</h3>
-              <p>
-                <strong>16. "The Warmth Of The Sun – Remastered" – The Beach Boys</strong> bathes everything in golden‑hour harmonies, born from heartbreak yet glowing with hope. <a href="https://soundcloud.com/ylaceyp/own-your-own-1" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[SoundCloud]</a>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Mid‑Journey Kaleidoscope</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">7. "Into Nirvana" – Maverick Sabre</strong> merges reggae‑tinted beats with soul testimony, opening a door to transcendence. <a href="https://www.youtube.com/watch?v=1HFsBv54wio" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[YouTube]</a>
               </p>
-              <p>
-                <strong>17. "Shady Grove" – Doc Watson</strong> picks front‑porch folk, a pastoral detour under Appalachian shade.
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">8. "Answer" – Phantogram</strong> pulses with trip‑hop tension, craving clarity inside echoed guitars. <a href="https://www.songtell.com/phantogram/answer" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
               </p>
-              <p>
-                                 <strong>18. "Come On Home" – Fred again.. & Brian Eno</strong> closes with ambient tenderness—like twilight windows opening back onto your own street. <a href="https://www.youtube.com/watch?v=VJmQqiixSn4" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">[YouTube]</a>
-               </p>
-             </div>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">9. "Music on My Teeth" – DJ Koze & José González</strong> flows like dream‑logic house; critics call Knock Knock "lush, melodic, and wistful." <a href="https://pitchfork.com/reviews/albums/dj-koze-knock-knock" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Pitchfork]</a> <a href="https://www.songtell.com/dj-koze-ft-jos-gonz-lez/music-on-my-teeth" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">10. "Golden" – Jill Scott</strong> bursts in, a radiant self‑empowerment anthem—"live your life like it's golden." <a href="https://www.songmeaningsandfacts.com/golden-a-timeless-anthem-of-self-empowerment/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Song Meanings]</a> <a href="https://en.wikipedia.org/wiki/Golden_%28Jill_Scott_song%29" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Wikipedia]</a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Peaks & Valleys</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">11. "Weak" – Vintage Culture & Maverick Sabre</strong> lifts the floor with festival‑ready deep house before surrendering to vulnerability. <a href="https://www.youtube.com/watch?v=1HFsBv54wio" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[YouTube]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">12. "Somedays" – Sonny Fodera, Jazzy, D.O.D</strong> keeps the four‑on‑the‑floor rolling—a hopeful bridge to brighter mornings. <a href="https://www.youtube.com/watch?v=xnoTAkThZq4" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[YouTube]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">13. "Cold Heart – PNAU Remix" – Elton John & Dua Lipa</strong> fuses disco nostalgia and modern pop, a chart‑dominating warm‑up. <a href="https://www.theaustralian.com.au/arts/music/nothing-hyperbolic-about-it-pnaus-success-in-the-wake-of-cold-heart-remix/news-story/93527ea12e60b34e942f1d15275f3733" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[The Australian]</a> <a href="https://people.com/dua-lipa-debuting-cold-heart-elton-john-royal-albert-hall-8762932" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[People.com]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">14. "Warm Foothills" – alt‑J</strong> returns you to acoustic intimacy, breath samples weaving lovers' voices. <a href="https://www.songtell.com/maverick-sabre/into-nirvana" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[Songtell]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">15. "Shady Lane" – Pavement</strong> introduces slack‑rock ease—jangly guitars and wry grins. <a href="https://karaokeparty.com/song-meanings/meaning-of-answer-by-phantogram/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[KaraokeParty]</a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Gentle Landing</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">16. "The Warmth Of The Sun – Remastered" – The Beach Boys</strong> bathes everything in golden‑hour harmonies, born from heartbreak yet glowing with hope. <a href="https://soundcloud.com/ylaceyp/own-your-own-1" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[SoundCloud]</a>
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">17. "Shady Grove" – Doc Watson</strong> picks front‑porch folk, a pastoral detour under Appalachian shade.
+              </p>
+              <p className="text-gray-700 dark:text-gray-200">
+                <strong className="text-gray-900 dark:text-white">18. "Come On Home" – Fred again.. & Brian Eno</strong> closes with ambient tenderness—like twilight windows opening back onto your own street. <a href="https://www.youtube.com/watch?v=VJmQqiixSn4" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">[YouTube]</a>
+              </p>
+            </div>
            </div>
          </details>
 
-        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-          <h4 className="font-semibold text-blue-800 mb-3 text-lg">TL;DR</h4>
-          <p className="text-blue-700 leading-relaxed">
+        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+          <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-3 text-lg">TL;DR</h4>
+          <p className="text-blue-700 dark:text-blue-400 leading-relaxed">
             From jazzy self‑affirmation to ambient homecoming, the playlist arcs through material questions, luminous highs, and sun‑dappled resolutions. Queue it front‑to‑back to trace a full‑body meditation on agency, community, and return.
           </p>
           <div className="mt-4 text-center">

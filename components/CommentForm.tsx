@@ -1,118 +1,85 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { postComment } from "../lib/entry-functions/postComment";
+import { useState } from 'react'
 
-interface CommentFormProps {
-  onCommentSubmitted?: () => void;
-}
-
-export default function CommentForm({ onCommentSubmitted }: CommentFormProps) {
-  const [comment, setComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { account, signAndSubmitTransaction, connected } = useWallet();
+export default function CommentForm() {
+  const [comment, setComment] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     
-    if (!connected || !account) {
-      alert("Please connect your wallet first");
-      return;
-    }
-
     if (!comment.trim()) {
-      alert("Please enter a comment");
-      return;
+      setError('Please enter a comment')
+      return
     }
 
-    setIsSubmitting(true);
+    setIsSubmitting(true)
+    setError(null)
 
     try {
-      const transaction = postComment({ content: comment.trim() });
-      const response = await signAndSubmitTransaction(transaction);
+      // Placeholder for future comment submission
+      // This can be replaced with actual API calls when needed
+      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
       
-      // Reset form
-      setComment("");
+      setSuccess(true)
+      setComment('')
       
-      // Notify parent component
-      if (onCommentSubmitted) {
-        onCommentSubmitted();
-      }
-      
-      console.log("Comment submitted:", response);
-      
-    } catch (error) {
-      console.error("Failed to submit comment:", error);
-      alert("Failed to submit comment. Please try again.");
+      // Reset success message after 3 seconds
+      setTimeout(() => setSuccess(false), 3000)
+    } catch (err) {
+      setError('Failed to submit comment. Please try again.')
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
-
-  if (!connected) {
-    return (
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-        <p className="text-gray-600 mb-4">Connect your wallet to comment on this poem</p>
-        {/* Wallet connection button would go here */}
-      </div>
-    );
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Share your thoughts
-      </h3>
+    <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+      <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-4">Share Your Thoughts</h3>
       
+      {success && (
+        <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg">
+          <p className="text-green-700 dark:text-green-400">Comment submitted successfully!</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg">
+          <p className="text-red-700 dark:text-red-400">{error}</p>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="comment" className="sr-only">
-            Your comment
+          <label htmlFor="comment" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Your Comment
           </label>
           <textarea
             id="comment"
-            rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="What do you think about this playlist poem? Share your interpretation, favorite lyric connections, or how it makes you feel..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            maxLength={500}
+            rows={4}
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Share your thoughts about this playlist poem..."
             disabled={isSubmitting}
           />
-          <div className="mt-1 text-right text-sm text-gray-500">
-            {comment.length}/500
-          </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-500">
-            Posting as: {account?.address.toString().slice(0, 6)}...{account?.address.toString().slice(-4)}
-          </div>
-          
-          <button
-            type="submit"
-            disabled={isSubmitting || !comment.trim()}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Posting...
-              </>
-            ) : (
-              "Post Comment"
-            )}
-          </button>
-        </div>
+        <button
+          type="submit"
+          disabled={isSubmitting || !comment.trim()}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit Comment'}
+        </button>
       </form>
-      
-      <div className="mt-4 text-xs text-gray-500">
-        💡 Your comment will be stored permanently on the Aptos blockchain and may take a few seconds to appear.
-      </div>
+
+      <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+        💡 Comments will be available when blockchain integration is implemented.
+      </p>
     </div>
-  );
-}
+  )
+} 
