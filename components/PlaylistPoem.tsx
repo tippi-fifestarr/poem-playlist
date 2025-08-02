@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from 'react'
+
 interface Track {
   order: number;
   title: string;
@@ -9,6 +13,8 @@ interface Track {
 }
 
 export default function PlaylistPoem() {
+  const [activeTab, setActiveTab] = useState('embed')
+  
   const tracks: Track[] = [
     { order: 1, title: "Own Your Own", artist: "Yazmin Lacey", album: "Morning Matters", apple: "https://music.apple.com/us/search?term=Own%20Your%20Own%20Yazmin%20Lacey", tidal: "https://listen.tidal.com/search?q=Own%20Your%20Own%20Yazmin%20Lacey", spotify: "https://open.spotify.com/track/3v7IwjkgOvcdoT0Odgrwzc" },
     { order: 2, title: "Love", artist: "OK Go", album: "And the Adjacent Possible", apple: "https://music.apple.com/us/search?term=Love%20OK%20Go", tidal: "https://listen.tidal.com/search?q=Love%20OK%20Go", spotify: "https://open.spotify.com/track/6Fn3HQPcm2DtgIfEIPeKys" },
@@ -37,19 +43,146 @@ export default function PlaylistPoem() {
           <p className="text-xl text-gray-600 italic">for your mom</p>
         </div>
 
-        {/* Spotify Playlist Embed */}
-        <div className="mb-8 flex justify-center">
-          <iframe
-            style={{borderRadius: '12px'}}
-            src="https://open.spotify.com/embed/playlist/3lti380WJdiG7OKrZHGseo?utm_source=generator"
-            width="100%"
-            height="352"
-            frameBorder="0"
-            allowFullScreen
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            className="max-w-2xl"
-          />
+        {/* Tabbed Playlist Player */}
+        <div className="mb-8 max-w-2xl mx-auto">
+          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            {/* Tab Headers */}
+            <div className="flex border-b border-gray-200">
+              <button
+                onClick={() => setActiveTab('embed')}
+                className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
+                  activeTab === 'embed' 
+                    ? 'bg-green-50 text-green-700 border-b-2 border-green-500' 
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                </svg>
+                Embedded Player
+              </button>
+              <button
+                onClick={() => setActiveTab('links')}
+                className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
+                  activeTab === 'links' 
+                    ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-500' 
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+                Get the Link
+              </button>
+            </div>
+
+            {/* Tab Content */}
+            <div className="p-6">
+              {activeTab === 'embed' && (
+                <div>
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">🎵 Family Playlist</h3>
+                    <p className="text-gray-600 text-sm">18 tracks • 1 hour 12 minutes</p>
+                  </div>
+                  
+                  {/* Spotify Embed */}
+                  <div className="relative">
+                    <iframe
+                      style={{borderRadius: '12px'}}
+                      src="https://open.spotify.com/embed/playlist/3lti380WJdiG7OKrZHGseo?utm_source=generator"
+                      width="100%"
+                      height="352"
+                      frameBorder="0"
+                      allowFullScreen
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                      className="w-full"
+                    />
+                    
+                    {/* Fallback overlay if embed fails */}
+                    <div className="absolute inset-0 bg-gray-900 bg-opacity-90 rounded-lg flex items-center justify-center hidden" id="embed-fallback">
+                      <div className="text-center text-white p-6">
+                        <svg className="w-12 h-12 mx-auto mb-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <p className="text-lg font-medium mb-2">Player Unavailable</p>
+                        <p className="text-gray-300 mb-4">Spotify's embed service is temporarily unavailable</p>
+                        <button
+                          onClick={() => setActiveTab('links')}
+                          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                        >
+                          Get Direct Links Instead
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'links' && (
+                <div>
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">🎵 Family Playlist</h3>
+                    <p className="text-gray-600 text-sm mb-4">18 tracks • 1 hour 12 minutes</p>
+                    <p className="text-gray-500 text-sm">Click below to open the playlist in your preferred streaming service:</p>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <a
+                      href="https://open.spotify.com/playlist/3lti380WJdiG7OKrZHGseo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between w-full p-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <div className="flex items-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-3">
+                          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                        </svg>
+                        <span className="font-medium">Open in Spotify</span>
+                      </div>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6l6 6-6 6"/>
+                      </svg>
+                    </a>
+                    
+                    <a
+                      href="https://music.apple.com/us/playlist/family-for-your-mom/pl.u-8aAVZqjH8bJx"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between w-full p-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      <div className="flex items-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-3">
+                          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <span className="font-medium">Open in Apple Music</span>
+                      </div>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6l6 6-6 6"/>
+                      </svg>
+                    </a>
+                    
+                    <a
+                      href="https://listen.tidal.com/playlist/family-for-your-mom"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between w-full p-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+                    >
+                      <div className="flex items-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-3">
+                          <path d="M12.012 3.992L8.008 7.996 12.012 12l4.004-4.004-4.004-4.004zm0 8.016L8.008 16.012 12.012 20.016l4.004-4.004-4.004-4.004zM4.004 7.996L0 12l4.004 4.004L8.008 12 4.004 7.996zM20.016 7.996L16.012 12l4.004 4.004L24.02 12l-4.004-4.004z"/>
+                        </svg>
+                        <span className="font-medium">Open in Tidal</span>
+                      </div>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6l6 6-6 6"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
       {/* Track Table */}
@@ -168,9 +301,17 @@ export default function PlaylistPoem() {
         </div>
       </section>
 
+      {/* Coming Soon: Blockchain Comments */}
+      <section className="mt-12 max-w-4xl mx-auto">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">🔗 Blockchain Integration Coming Soon</h3>
+          <p className="text-blue-700">Connect your Aptos wallet to comment on this playlist poem on-chain!</p>
+        </div>
+      </section>
+
       {/* What to Expect */}
       <section className="mt-12 prose prose-lg mx-auto">
-        <h2>What to Expect</h2>
+        <h2>About This Poem</h2>
         <p>
           From dusty‑jazz soul openers to sun‑kissed folk closes, this playlist moves like a slow‑rolling river of self‑discovery. You'll glide through neo‑soul affirmation (Own Your Own), quirky art‑pop fireworks (Love), psychedelic lounge funk (Money), and beyond—landing finally in Fred again.. & Brian Eno's ambient welcome‑home.
         </p>

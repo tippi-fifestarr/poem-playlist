@@ -85,6 +85,23 @@ This creates a static export in the `out/` directory that can be deployed to any
 - **Tailwind CSS** - Utility-first CSS framework
 - **@tailwindcss/typography** - Beautiful typography styles
 
+## 📚 Additional Documentation
+
+For detailed information about the blockchain integration and deployment:
+
+- **[Architecture Guide](docs/ARCHITECTURE.md)** - System design and component architecture
+- **[API Reference](docs/API.md)** - Smart contract functions and GraphQL queries  
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment instructions
+
+## 🔗 Blockchain Integration
+
+This playlist poem now supports **on-chain comments** powered by:
+- **Smart Contract**: Aptos Move contract for comment storage
+- **Real-time Indexing**: Comments indexed via Aptos No-Code Indexer
+- **Wallet Integration**: Connect with Petra and other Aptos wallets
+
+Visit the running app at **http://localhost:3001** to test the comment functionality!
+
 ## License
 
 This project is open source and available under the [MIT License](LICENSE). 
